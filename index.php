@@ -1,6 +1,7 @@
 <?php
 
 require_once 'inc/functions.php';
+include_once 'inc/labels.php';
 
 $file = 'bonnie.csv';
 $data = parse_bonnie_csv($file);
@@ -22,12 +23,21 @@ foreach ($data['name'] as $val) {
 	printf("        data.addColumn('number', '%s')\n", $val);
 }
 
-echo addRow($data['outblk'], 'Seq Block Output');
-echo addRow($data['outrw'], 'Block Rewrite');
-echo addRow($data['inblk'], 'Block Input');
+switch ($_GET['t']) {
+	case 'metadata':
+		$title = 'files/sec';
+		$vtitle = 'File metadata';
+		$types = array('sc', 'sd', 'rc', 'rd');
+		break;
+	default:
+		$title = 'kB/sec';
+		$vtitle = 'Block IO';
+		$types = array('outblk', 'outrw', 'inblk');
+		break;
+}
 
-$title = 'kB/sec';
-$vtitle = 'Bonnie++ Absolute block IO';
+foreach($types as $label)
+	echo addRow($data[$label], $labels[$label]);
 
 echo <<<EOT
         var options = {
