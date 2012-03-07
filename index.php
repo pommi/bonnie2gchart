@@ -39,6 +39,11 @@ switch ($_GET['t']) {
 		$vtitle = 'Block IO CPU';
 		$types = array('outblkcpu', 'outrwcpu', 'inblkcpu', 'seekcpu');
 		break;
+	case 'seq-cpu':
+		$title = 'percent';
+		$vtitle = 'Seq and Random CPU';
+		$types = array('sccpu', 'srcpu', 'sdcpu', 'rccpu', 'rrcpu', 'rdcpu');
+		break;
 	case 'blockio':
 	default:
 		$title = 'kB/sec';
