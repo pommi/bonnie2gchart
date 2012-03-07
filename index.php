@@ -34,6 +34,12 @@ switch ($_GET['t']) {
 		$vtitle = 'File metadata (read)';
 		$types = array('sr', 'rr');
 		break;
+	case 'blockio-cpu':
+		$title = 'percent';
+		$vtitle = 'Block IO CPU';
+		$types = array('outblkcpu', 'outrwcpu', 'inblkcpu', 'seekcpu');
+		break;
+	case 'blockio':
 	default:
 		$title = 'kB/sec';
 		$vtitle = 'Block IO';
