@@ -29,6 +29,11 @@ switch ($_GET['t']) {
 		$vtitle = 'File metadata';
 		$types = array('sc', 'sd', 'rc', 'rd');
 		break;
+	case 'metadata-read':
+		$title = 'files/sec';
+		$vtitle = 'File metadata (read)';
+		$types = array('sr', 'rr');
+		break;
 	default:
 		$title = 'kB/sec';
 		$vtitle = 'Block IO';

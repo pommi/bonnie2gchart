@@ -10,6 +10,8 @@ function parse_bonnie_csv($file) {
 				die('not enough columns');
 
 			foreach (array_combine($col_names, $line) as $k=>$v) {
+				if (preg_match('/^\++$/', $v))
+					$v = 0;
 				$csv[$k][] = $v;
 			}
 		}
