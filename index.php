@@ -60,6 +60,11 @@ switch ($_GET['t']) {
 		$vtitle = 'File metadata Latency';
 		$types = array('latsc', 'latsd', 'latrc', 'latrd');
 		break;
+	case 'metadata-read-latency':
+		$title = 'milliseconds (lower is better)';
+		$vtitle = 'File metadata (read) Latency';
+		$types = array('latsr', 'latrr');
+		break;
 }
 
 foreach($types as $label)
