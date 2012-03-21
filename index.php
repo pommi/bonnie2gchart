@@ -55,6 +55,11 @@ switch ($_GET['t']) {
 		$vtitle = 'Block IO Latency';
 		$types = array('latoutblk', 'latoutrw', 'latinblk');
 		break;
+	case 'metadata-latency':
+		$title = 'milliseconds (lower is better)';
+		$vtitle = 'File metadata Latency';
+		$types = array('latsc', 'latsd', 'latrc', 'latrd');
+		break;
 }
 
 foreach($types as $label)
