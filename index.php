@@ -7,11 +7,24 @@ $file = 'bonnie.csv';
 $data = parse_bonnie_csv($file);
 
 if (!isset($_GET['t']) || empty($_GET['t'])) {
-	echo "<html>\n<body>\n<title>Bonnie to Google Chart</title>\n<h1>Bonnie to Google Chart</h1>\n<ul>";
+	echo <<<EOT
+<html>
+<head><title>Bonnie to Google Chart</title></head>
+<body>
+<h1>Bonnie to Google Chart</h1>
+<ul>
+
+EOT;
+
 	foreach ($types as $key => $type) {
 		printf('<li><a href="?t=%s">%s</a></li>', $key, $type['name']);
 	}
-	echo "</ul>\n</body>\n</html>\n";
+
+	echo <<<EOT
+</ul>
+</body>
+</html>
+EOT;
 	exit;
 }
 
