@@ -26,32 +26,32 @@ foreach ($data['name'] as $val) {
 switch ($_GET['t']) {
 	case 'blockio':
 	default:
-		$title = 'kB/sec';
+		$title = 'kB/sec (higher is better)';
 		$vtitle = 'Block IO';
 		$types = array('outblk', 'outrw', 'inblk');
 		break;
 	case 'metadata':
-		$title = 'files/sec';
+		$title = 'files/sec (higher is better)';
 		$vtitle = 'File metadata';
 		$types = array('sc', 'sd', 'rc', 'rd');
 		break;
 	case 'metadata-read':
-		$title = 'files/sec';
+		$title = 'files/sec (higher is better)';
 		$vtitle = 'File metadata (read)';
 		$types = array('sr', 'rr');
 		break;
 	case 'blockio-cpu':
-		$title = 'percent';
+		$title = 'CPU usage in % (lower is better)';
 		$vtitle = 'Block IO CPU';
 		$types = array('outblkcpu', 'outrwcpu', 'inblkcpu', 'seekcpu');
 		break;
 	case 'seq-cpu':
-		$title = 'percent';
+		$title = 'CPU usage in % (lower is better)';
 		$vtitle = 'Seq and Random CPU';
 		$types = array('sccpu', 'srcpu', 'sdcpu', 'rccpu', 'rrcpu', 'rdcpu');
 		break;
 	case 'blockio-latency':
-		$title = 'milliseconds';
+		$title = 'milliseconds (lower is better)';
 		$vtitle = 'Block IO Latency';
 		$types = array('latoutblk', 'latoutrw', 'latinblk');
 		break;
