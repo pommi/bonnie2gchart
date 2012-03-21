@@ -1,5 +1,48 @@
 <?php
 
+$types = array(
+	'blockio' => array(
+		'name' => 'Block IO',
+		'title' => 'kB/sec (higher is better)',
+		'types' => array('outblk', 'outrw', 'inblk'),
+	),
+	'metadata' => array(
+		'name' => 'File metadata',
+		'title' => 'files/sec (higher is better)',
+		'types' => array('sc', 'sd', 'rc', 'rd'),
+	),
+	'metadata-read' => array(
+		'name' => 'File metadata (read)',
+		'title' => 'files/sec (higher is better)',
+		'types' => array('sr', 'rr'),
+	),
+	'blockio-cpu' => array(
+		'name' => 'Block IO CPU',
+		'title' => 'CPU usage in % (lower is better)',
+		'types' => array('outblkcpu', 'outrwcpu', 'inblkcpu', 'seekcpu'),
+	),
+	'metadata-cpu' => array(
+		'name' => 'Seq and Random CPU',
+		'title' => 'CPU usage in % (lower is better)',
+		'types' => array('sccpu', 'srcpu', 'sdcpu', 'rccpu', 'rrcpu', 'rdcpu'),
+	),
+	'blockio-latency' => array(
+		'name' => 'Block IO Latency',
+		'title' => 'milliseconds (lower is better)',
+		'types' => array('latoutblk', 'latoutrw', 'latinblk'),
+	),
+	'metadata-latency' => array(
+		'name' => 'File metadata Latency',
+		'title' => 'milliseconds (lower is better)',
+		'types' => array('latsc', 'latsd', 'latrc', 'latrd'),
+	),
+	'metadata-read-latency' => array(
+		'name' => 'File metadata (read) Latency',
+		'title' => 'milliseconds (lower is better)',
+		'types' => array('latsr', 'latrr'),
+	),
+);
+
 $labels = array(
 	'vera' => 'Version',
 	'verb' => 'Version',
