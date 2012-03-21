@@ -45,7 +45,7 @@ switch ($_GET['t']) {
 		$vtitle = 'Block IO CPU';
 		$types = array('outblkcpu', 'outrwcpu', 'inblkcpu', 'seekcpu');
 		break;
-	case 'seq-cpu':
+	case 'metadata-cpu':
 		$title = 'CPU usage in % (lower is better)';
 		$vtitle = 'Seq and Random CPU';
 		$types = array('sccpu', 'srcpu', 'sdcpu', 'rccpu', 'rrcpu', 'rdcpu');
