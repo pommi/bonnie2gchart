@@ -10,8 +10,27 @@ function parse_bonnie_csv($file) {
 				die('not enough columns');
 
 			foreach (array_combine($col_names, $line) as $k=>$v) {
+
 				if (preg_match('/^\++$/', $v))
 					$v = 0;
+
+				if (preg_match('/^(\d+)([mu]s)$/', $v, $matches)) {
+					switch ($matches[2]) {
+						case 'ms':
+							$v = $matches[1];
+							break;
+						case 'us':
+							$v = $matches[1] / 1000;
+							break;
+						case 'ns':
+							$v = $matches[1] / 1000000;
+							break;
+						default:
+							$v = $v;
+							break;
+					}
+				}
+
 				$csv[$k][] = $v;
 			}
 		}

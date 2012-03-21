@@ -24,6 +24,12 @@ foreach ($data['name'] as $val) {
 }
 
 switch ($_GET['t']) {
+	case 'blockio':
+	default:
+		$title = 'kB/sec';
+		$vtitle = 'Block IO';
+		$types = array('outblk', 'outrw', 'inblk');
+		break;
 	case 'metadata':
 		$title = 'files/sec';
 		$vtitle = 'File metadata';
@@ -44,11 +50,10 @@ switch ($_GET['t']) {
 		$vtitle = 'Seq and Random CPU';
 		$types = array('sccpu', 'srcpu', 'sdcpu', 'rccpu', 'rrcpu', 'rdcpu');
 		break;
-	case 'blockio':
-	default:
-		$title = 'kB/sec';
-		$vtitle = 'Block IO';
-		$types = array('outblk', 'outrw', 'inblk');
+	case 'blockio-latency':
+		$title = 'milliseconds';
+		$vtitle = 'Block IO Latency';
+		$types = array('latoutblk', 'latoutrw', 'latinblk');
 		break;
 }
 
