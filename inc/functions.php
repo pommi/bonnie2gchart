@@ -20,7 +20,7 @@ function parse_bonnie_csv($file) {
 			foreach (array_combine($col_names, $line) as $k=>$v) {
 
 				if (preg_match('/^\++$/', $v))
-					$v = 0;
+					$v = 'null';
 
 				if (preg_match('/^(\d+)([mu]s)$/', $v, $matches)) {
 					switch ($matches[2]) {
