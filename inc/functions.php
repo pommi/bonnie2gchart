@@ -16,10 +16,14 @@ function parse_bonnie_csv($file) {
 			} elseif (count($col_196) == count($line)) {
 				$col_names = $col_196;
 			}
+			$combined = array_combine($col_names, $line);
+			if (count($col_103) == count($line)) {
+				$combined = array_merge(array_fill_keys($col_196, ''), $combined);
+			}
 
-			foreach (array_combine($col_names, $line) as $k=>$v) {
+			foreach ($combined as $k=>$v) {
 
-				if (preg_match('/^\++$/', $v))
+				if (empty($v) || preg_match('/^\++$/', $v))
 					$v = 'null';
 
 				if (preg_match('/^(\d+)([mu]s)$/', $v, $matches)) {
