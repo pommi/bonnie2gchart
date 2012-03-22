@@ -8,6 +8,7 @@ $data = parse_bonnie_csv($file);
 
 if (!isset($_GET['t']) || empty($_GET['t'])) {
 	echo <<<EOT
+<!DOCTYPE html>
 <html>
 <head><title>Bonnie to Google Chart</title></head>
 <body>
@@ -31,6 +32,8 @@ EOT;
 echo <<<EOT
 <html>
   <head>
+	<title>bonnie2gchart - {$types[$_GET['t']]['name']}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
@@ -60,6 +63,7 @@ echo <<<EOT
     </script>
   </head>
   <body>
+    <a href=".">« index</a>
     <div id="chart_div" style="width: 900px; height: 500px;"></div>
   </body>
 </html>
