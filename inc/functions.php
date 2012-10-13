@@ -7,9 +7,26 @@ function parse_bonnie_csv($file) {
 		# bonnie++ 1.96 column names
 		$col_196 = array('vera', 'verb', 'name', 'conc', 'stz', 'sz', 'tta', 'outch', 'outchcpu', 'outblk', 'outblkcpu', 'outrw', 'outrwcpu', 'inch', 'inchcpu', 'inblk', 'inblkcpu', 'seek', 'seekcpu', 'ttb', 'ttc', 'ttd', 'tte', 'ttf', 'sc', 'sccpu', 'sr', 'srcpu', 'sd', 'sdcpu', 'rc', 'rccpu', 'rr', 'rrcpu', 'rd', 'rdcpu', 'latoutch', 'latoutblk', 'latoutrw', 'latinch', 'latinblk', 'latrand', 'latsc', 'latsr', 'latsd', 'latrc', 'latrr', 'latrd');
 
+		$col_103_count  = count($col_103);
+                $col_196_count  = count($col_196);
+
+		$i = 0;
 		while (($line = fgetcsv($handle, 1000, ",")) !== FALSE) {
-			if (count($col_103) != count($line) && count($col_196) != count($line))
-				die('not enough columns');
+			$csv_count	= count($line);
+			$i++;
+
+			// Ignore any blank lines
+			if ($csv_count <= 1) continue;
+
+			if ($col_103_count != $csv_count && $col_196_count != $csv_count)
+			{
+				// Let the user know what went wrong
+				$msg = "Column count mismatch:<br />";
+				$msg.= "v1.03 expects $col_103_count columns<br />";
+				$msg.= "v1.96 expects $col_196_count columns<br />";
+				$msg.= "Line $i of the CSV file has $csv_count columns";
+				die($msg);
+			}
 
 			if (count($col_103) == count($line)) {
 				$col_names = $col_103;
