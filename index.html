@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bonnie to Google Chart</title>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="inc/labels.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+	<h1>Bonnie to Google Chart</h1>
+	<form action="." method="post">
+		<label for="data">Bonnie Data</label>
+		<p>
+			<textarea id="data" name="data" cols="100" rows="10" placeholder="1.97,1.97,hostname,1,....."></textarea>
+			<p id="error"></p>
+		</p>
+		<label for="graphType">Graph Type</label>
+		<p>
+			<select id="graphType" name="t">
+			<!-- filled in dynamically -->
+			</select>
+		</p>
+		<p>
+			<input id="submit" type="button" name="Submit" value="Submit">
+		</p>
+	</form>
+	 <div id="chartDiv" style="width: 900px; height: 500px;"></div>
+</body>
+</html>
