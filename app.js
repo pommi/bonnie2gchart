@@ -6,6 +6,7 @@ function parseBonnieCsv(csvData) {
 	var timeRegex = /^(\d+)([mun]s)$/;
 	var col103 = ['name', 'sz', 'outch', 'outchcpu', 'outblk', 'outblkcpu', 'outrw', 'outrwcpu', 'inch', 'inchcpu', 'inblk', 'inblkcpu', 'seek', 'seekcpu', 'files', 'sc', 'sccpu', 'sr', 'srcpu', 'sd', 'sdcpu', 'rc', 'rccpu', 'rr', 'rrcpu', 'rd', 'rdcpu'];
 	var col196 = ['vera', 'verb', 'name', 'conc', 'stz', 'sz', 'tta', 'outch', 'outchcpu', 'outblk', 'outblkcpu', 'outrw', 'outrwcpu', 'inch', 'inchcpu', 'inblk', 'inblkcpu', 'seek', 'seekcpu', 'ttb', 'ttc', 'ttd', 'tte', 'ttf', 'sc', 'sccpu', 'sr', 'srcpu', 'sd', 'sdcpu', 'rc', 'rccpu', 'rr', 'rrcpu', 'rd', 'rdcpu', 'latoutch', 'latoutblk', 'latoutrw', 'latinch', 'latinblk', 'latrand', 'latsc', 'latsr', 'latsd', 'latrc', 'latrr', 'latrd'];
+	var col198 = ['vera', 'verb', 'name', 'conc', 'stz', 'sz', 'tta', 'seeks', 'seek_proc_count', 'outch', 'outchcpu', 'outblk', 'outblkcpu', 'outrw', 'outrwcpu', 'inch', 'inchcpu', 'inblk', 'inblkcpu', 'seek', 'seekcpu', 'ttb', 'ttc', 'ttd', 'tte', 'ttf', 'sc', 'sccpu', 'sr', 'srcpu', 'sd', 'sdcpu', 'rc', 'rccpu', 'rr', 'rrcpu', 'rd', 'rdcpu', 'latoutch', 'latoutblk', 'latoutrw', 'latinch', 'latinblk', 'latrand', 'latsc', 'latsr', 'latsd', 'latrc', 'latrr', 'latrd'];
 	var colNames = [];
 	var csv = {};
 
@@ -16,17 +17,20 @@ function parseBonnieCsv(csvData) {
 		if (cols.length <= 1) {
 			return;
 		}
-		if (cols.length != col103.length && cols.length != col196.length) {
+		if (cols.length != col103.length && cols.length != col196.length && cols.length != col198.length) {
 			msg = 'Column count mistmatch:<br />';
 			msg += 'v1.03 expects ' + col103.length + ' columns<br />';
 			msg += 'v1.96 expects ' + col196.length + ' columns<br />';
+			msg += 'v1.98 expects ' + col198.length + ' columns<br />';
 			msg += 'Line ' + lineNumber + ' has ' + cols.length + ' columns';
 			throw new Error(msg);
 		}
 		if (cols.length == col103.length) {
 			colNames = col103;
-		} else {
+		} else if (cols.length == col196.length) {
 			colNames = col196;
+		} else {
+			colNames = col198;
 		}
 
 		// parse the columns into a key/value structure
