@@ -1,5 +1,21 @@
 google.load("visualization", "1", {packages:["corechart"]});
 
+// Function to silently load 'bonnie.csv' from the root path and populate <textarea id="data">
+function loadCsvData() {
+  fetch('bonnie.csv')
+    .then(response => {
+      if (!response.ok) {
+        return '';
+      }
+      return response.text();
+    })
+    .then(data => {
+      document.getElementById('data').value = data;
+    })
+}
+
+// Call the function to load the data when the window loads
+window.addEventListener('load', loadCsvData);
 
 // utility method for parsing the csv
 function parseBonnieCsv(csvData) {
